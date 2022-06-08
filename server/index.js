@@ -3,6 +3,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+import authRouter from './auth.router.js';
+
 //*====== initialization =====================================================================================================================================
 const app = express();
 dotenv.config();
@@ -11,6 +13,12 @@ dotenv.config();
 const HOST = process.env.HOST;
 const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
+
+//*====== settings =====================================================================================================================================
+app.use(express.json());
+
+//*====== routers =====================================================================================================================================
+app.use('/api/auth', authRouter);
 
 const start = async () => {
     try {
