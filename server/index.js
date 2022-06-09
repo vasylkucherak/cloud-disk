@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
 import authRouter from './auth.router.js';
+import cors from './cors.middleware.js';
 
 //*====== initialization =====================================================================================================================================
 const app = express();
@@ -15,6 +16,7 @@ const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URL;
 
 //*====== settings =====================================================================================================================================
+app.use(cors);
 app.use(express.json());
 
 //*====== routers =====================================================================================================================================
